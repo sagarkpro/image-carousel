@@ -1,0 +1,41 @@
+.flexbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.75em;
+    overflow: hidden;
+    transition: 0.5s ease-out;
+}
+
+.image{
+    height: 350px;
+    width: 500px;
+    background-position: center;
+    background-size: cover;
+    /* border: solid 2px; */
+    flex-shrink: 0;
+    transition: 0.5s ease-out;
+}
+
+.btn-wrapper{
+    margin-top: -200px;
+    /* border: solid 2px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 100%;
+}
+
+.prev-btn{
+    margin: 0.75rem;
+    /* position: absolute; */
+    justify-items: flex-start;
+}
+
+.next-btn{
+    margin: 0.75rem;
+    /* position: absolute; */
+    justify-content: flex-end;
+}
