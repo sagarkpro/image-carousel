@@ -1,0 +1,43 @@
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .carousel-wrapper {
+    height: 300px;
+    overflow: hidden;
+    width: 80%; /* Adjust width as needed */
+  }
+  
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+    /* width: calc(100% * 5); Adjust this according to the number of images */
+  }
+  
+  .carousel-images img {
+    width: calc(100% / 3);
+    height: 300px;
+  } 
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  button:first-of-type {
+    left: 10px;
+  }
+  
+  button:last-of-type {
+    right: 10px;
+  }
+
+  .image{
+    /* height: 100%; */
+    border: solid 2px;
+  }
+  
