@@ -1,4 +1,3 @@
-import { Button } from 'primereact/button';
 import './AppV2.css'
 import { useEffect, useState } from 'react';
 
@@ -20,7 +19,6 @@ function AppV2() {
         "https://i.travelapi.com/lodging/74000000/73980000/73974400/73974370/aab5e333_z.jpg",
       ];
 
-    const [rem, setRem] = useState<number>(0);
     const [transform, setTransform] = useState<number>(0);
     const [transformCounter, setTransformCounter] = useState<number>(30);
     const [higlightedDiv, setHighlightesDiv] = useState<number>(0);
@@ -28,15 +26,6 @@ function AppV2() {
     const updateTransform=(transformAmt: number): void=>{
         let _transform = transform;
         _transform += transformAmt;
-        // if(transformAmt < 0){
-        //     setTransformCounter(prev => prev - 52);
-        //     setHighlightesDiv(prev => ++prev);
-        // }
-            
-        // else if(higlightedDiv > 0){
-        //     setTransformCounter(prev => prev + 52);
-        //     setHighlightesDiv(prev => --prev);
-        // } 
         if(_transform >= -512*(images.length) && _transform <= 0){
             setTransform(_transform);
             if(transformAmt < 0){
@@ -56,41 +45,41 @@ function AppV2() {
         
     }, [transform])
 
-    useEffect(()=>{
-        setRem(parseFloat(getComputedStyle(document.documentElement).fontSize));
-        console.log(parseFloat(getComputedStyle(document.documentElement).fontSize));
-        
-    }, [])
-
     return ( 
         <>
-            <div className="flexbox" >
-                {
-                    images.map((image, index)=>{
-                        return(
-                            <>
-                                <div className='image' style={{backgroundImage: `url(${image})`, transform: `translateX(${transform}px)`}}></div>
-                            </>
-                        )
-                    })
-                }
-            </div>
-
-            <div className='control-wrapper'>
-                <div className="btn-wrapper">
-                    <Button className='next-btn' label='+' onClick={()=>{updateTransform(524)}}></Button>
-                    <Button className='prev-btn' label='-' onClick={()=>{updateTransform(-524)}}></Button>
-                </div>
-            </div>
-            <div className='image-count-wrapper'>
-                <div className="image-count">
+            <div className="div-container">
+                <div className="flexbox" >
                     {
                         images.map((image, index)=>{
                             return(
-                                <div className={index === higlightedDiv ? 'highlighted-div' : ''} style={{transform: `translateX(${transformCounter}px)`}}></div>
+                                <>
+                                    <div className='image' style={{backgroundImage: `url(${image})`, transform: `translateX(${transform}px)`}}></div>
+                                </>
                             )
                         })
                     }
+                </div>
+
+                <div className='control-wrapper'>
+                    <div className="btn-wrapper">
+                        <div className="arrow-button left-arrow" onClick={()=>{updateTransform(524)}}>
+                        <i className="arrow left"></i>
+                        </div>
+                        <div className="arrow-button right-arrow" onClick={()=>{updateTransform(-524)}}>
+                            <i className="arrow right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div className='image-count-wrapper'>
+                    <div className="image-count">
+                        {
+                            images.map((image, index)=>{
+                                return(
+                                    <div className={index === higlightedDiv ? 'highlighted-div' : ''} style={{transform: `translateX(${transformCounter}px)`}}></div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </>
